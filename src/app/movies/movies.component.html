@@ -1,0 +1,53 @@
+
+
+<div class="mat-elevation-z8 movie-wrapper mt-2">
+  <div class="loader"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-form-field class="search-wrapper">
+    <mat-label>Search (via name)</mat-label>
+    <input matInput (keyup)="applyFilter($event)">
+  </mat-form-field>
+
+  <table [dataSource]="allMovies" mat-table matSort>
+
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef mat-header-cell> Title</th>
+      <td *matCellDef="let element" mat-cell> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="url">
+      <th *matHeaderCellDef mat-header-cell> URL</th>
+      <td *matCellDef="let element" mat-cell>
+        <a [href]="element.url" target="_blank">Click to redirect</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="platform">
+      <th *matHeaderCellDef mat-header-cell> Platform</th>
+      <td *matCellDef="let element" mat-cell> {{element.platform}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Score</th>
+      <td *matCellDef="let element" mat-cell> {{element.score}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+      <th *matHeaderCellDef mat-header-cell> Genre</th>
+      <td *matCellDef="let element" mat-cell> {{element.genre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="release_year">
+      <th *matHeaderCellDef mat-header-cell> Release Year</th>
+      <td *matCellDef="let element" mat-cell> {{element.release_year}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="8"></mat-paginator>
+</div>

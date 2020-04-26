@@ -1,0 +1,35 @@
+.movie-wrapper {
+  width: 95%;
+  margin: auto;
+  position: relative;
+
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .search-wrapper {
+    padding: 1rem;
+  }
+
+  table {
+    width: 100%;
+
+    .mat-column-number,
+    .mat-column-state {
+      max-width: 64px;
+    }
+
+    .mat-column-created {
+      max-width: 124px;
+    }
+  }
+}

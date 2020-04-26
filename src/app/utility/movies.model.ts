@@ -1,4 +1,4 @@
-export interface MoviesModule {
+export interface MoviesModel {
     title: string;
     url: string;
     platform: string;
